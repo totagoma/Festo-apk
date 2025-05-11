@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from '../screens/HomeScreen';
 import SensorDetailScreen from '../screens/SensorDetailScreen';
 import ExploreScreen from '../screens/ExploreScreen';
+import LoginScreen from '../screens/LoginScreen';  // Tela de Login
+import RegisterScreen from '../screens/RegisterScreen';  // Tela de Cadastro
 
 const Stack = createStackNavigator();
 
@@ -26,9 +28,29 @@ const globalScreenOptions = {
 export default function AppNavigator() {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Login"  // Tela de login é a inicial
             screenOptions={globalScreenOptions}
         >
+            {/* Tela de Login */}
+            <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{
+                    title: 'Login',
+                    headerShown: false,  // Não exibe o cabeçalho na tela de login
+                }}
+            />
+
+            {/* Tela de Cadastro */}
+            <Stack.Screen
+                name="Register"
+                component={RegisterScreen}
+                options={{
+                    title: 'Cadastro',
+                    headerShown: false,  // Não exibe o cabeçalho na tela de cadastro
+                }}
+            />
+
             {/* Tela Principal */}
             <Stack.Screen
                 name="Home"
