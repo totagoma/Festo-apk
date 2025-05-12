@@ -15,42 +15,63 @@ JSON para simulação de dados de sensores
 Estrutura do Projeto:
 FESTO-APK/
 ├── expo/                   → Elementos específicos do Expo
-│   ├── web/cache/production/images/favicon/favicon-24272cdaeff82cc5fac...  → Cache de ícones e imagens do Expo
-│   ├── favicon-48.png       → Favicon para o app
+│   ├── web/cache/production/images/favicon/favicon-24...  → Cache de ícones
+│   ├── favicon-48.png       → Favicon adicional
 │   ├── devices.json         → Configuração de dispositivos
 │   └── README.md            → Documentação do Expo
-├── assets/                 → Imagens e ícones do app
+│
+├── assets/                 → Recursos estáticos
 │   ├── adaptive-icon.png    → Ícone adaptável
 │   ├── favicon.png          → Favicon do app
 │   ├── icon.png             → Ícone principal
-│   └── splash-icon.png      → Ícone para a tela de splash
-├── components/             → Componentes reutilizáveis do app
+│   └── splash-icon.png      → Ícone para splash screen
+│
+├── components/             → Componentes reutilizáveis
 │   ├── Footer.js            → Componente Footer
-│   └── Header.js            → Componente Header
-├── hooks/                  → Lógicas e hooks reutilizáveis
-│   ├── mock/               → Arquivo JSON com dados simulados de sensores
-│   │   └── sensors.json     → Dados dos sensores simulados
-│   └── useDataFetch.js      → Hook para buscar dados de sensores
-├── navigation/             → Controle de navegação entre telas
-│   └── AppNavigator.js      → Configuração do Stack Navigator
-├── screens/                → Telas principais do app
-│   ├── HomeScreen.js        → Tela inicial com lista de sensores
-│   ├── ExploreScreen.js     → Tela de exploração (ainda a ser preenchida)
-│   └── SensorDetailScreen.js → Tela com detalhes de um sensor
-├── services/               → Acesso e manipulação de dados
-│   ├── api.js              → Configuração para futuras APIs reais
-│   └── dataService.js      → Função que retorna dados simulados de sensores
-├── App.js                  → Ponto de entrada do app e configuração do Navigator
-├── app.json                → Configuração do Expo (App)
-├── index.js                → Ponto de inicialização do app
-├── package-lock.json       → Bloqueio de dependências do projeto
-├── package.json            → Arquivo de configuração de pacotes e dependências
-└── .gitignore              → Arquivo para ignorar arquivos temporários e de build
+│   ├── Header.js            → Componente Header
+│   └── SensorCard.js        → Card de sensores (adicionado)
+│
+├── festo-backend/          → Backend da aplicação
+│   ├── controllers/        → Lógica CRUD dos sensores
+│   │   └── sensorController.js    → Lógica CRUD dos sensores
+│   ├── mock/               → Dados mockados para testes
+│   │   └── sensors.json    → Dataset para testes
+│   ├── routes/             → Endpoints da API
+│   │   ├── sensorRoutes.js  → Endpoints /sensors
+│   │   └── index.js       → Centraliza as rotas
+│   ├── index.js            → Ponto de entrada da API (config. Express)
+│   └── package.json        → Dependências e scripts
+│
+├── hooks/                  → Hooks do frontend
+│   ├── mock/               → Dados mockados para frontend
+│   │   └── sensors.json    → Dados mockados
+│   └── useDataFetch.js     → Hook para requisições API
+│
+├── navigation/             → Navegação do app
+│   └── AppNavigator.js     → Configuração do Stack Navigator
+│
+├── screens/                → Telas do aplicativo
+│   ├── HomeScreen.js       → Tela de lista de sensores
+│   ├── ExploreScreen.js    → Tela de exploração (ainda em desenvolvimento)
+│   ├── LoginScreen.js      → Tela de autenticação (adicionado)
+│   ├── RegisterScreen.js   → Tela de cadastro (adicionado)
+│   └── SensorDetailScreen.js → Tela de detalhes do sensor
+│
+├── services/               → Serviços de backend
+│   ├── api.js             → Configuração da API
+│   └── dataService.js     → Manipulação de dados
+│
+├── App.js                  → Ponto de entrada do app
+├── app.json                → Configuração do Expo
+├── index.js                → Inicialização
+├── package-lock.json       → Dependências travadas
+├── package.json            → Configuração do projeto
+└── .gitignore              → Arquivos ignorados
+
 
 Funcionalidades Implementadas
 Tela Inicial - HomeScreen.js
-
-Exibe uma lista de sensores (dados mockados de sensors.json).
+Exibe uma lista de sensores com dados mockados.
 
 Cada sensor mostra:
 
@@ -60,10 +81,9 @@ Valor atual
 
 Status (OK/Alerta)
 
-Ao clicar em um sensor, o usuário é levado para a tela de detalhes desse sensor (SensorDetailScreen).
+Ao clicar em um sensor, o usuário é levado para a tela de detalhes.
 
 Tela de Detalhes do Sensor - SensorDetailScreen.js
-
 Exibe os detalhes de um sensor específico:
 
 Nome
@@ -75,18 +95,25 @@ Status
 Histórico de dados (simulado)
 
 Tela de Exploração - ExploreScreen.js
+Esta tela está reservada para futuras funcionalidades analíticas.
 
-A tela está criada, mas ainda não foi preenchida com funcionalidades específicas. Este espaço está reservado para exibir mais detalhes analíticos ou gráficos de sensores no futuro.
+Gráficos e análises avançadas dos sensores serão implementados futuramente.
+
+Login e Cadastro
+LoginScreen.js: Tela de autenticação para os usuários (adicionada recentemente).
+
+RegisterScreen.js: Tela de registro de novos usuários (adicionada recentemente).
 
 Navegação
-
-Utilizando o React Navigation:
-
 HomeScreen: Lista de sensores.
 
 SensorDetailScreen: Detalhamento dos sensores.
 
-ExploreScreen: (Futuramente preenchido).
+ExploreScreen: (Futuramente preenchido com gráficos e análises).
+
+LoginScreen & RegisterScreen: Tela de autenticação e cadastro.
+
+
 
 Como Rodar o Projeto
 Pré-requisitos
